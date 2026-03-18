@@ -288,7 +288,7 @@ function showToast(msg) {
   const toast = document.getElementById('toast');
   document.getElementById('toastMsg').textContent = msg;
   toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 2800);
+  setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
 
