@@ -154,9 +154,10 @@ body:has(button:hover) .cursor-follower { width: 48px; height: 48px; border-colo
 .header-actions {
   display: flex; align-items: center; gap: 12px;
   margin-left: auto;
+  flex-shrink: 0;
 }
 .btn-whatsapp-header {
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
   background: var(--green);
   color: #000;
   text-decoration: none;
@@ -165,8 +166,15 @@ body:has(button:hover) .cursor-follower { width: 48px; height: 48px; border-colo
   border-radius: 100px;
   transition: var(--transition);
   white-space: nowrap;
+  min-width: fit-content;
 }
 .btn-whatsapp-header:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,229,160,0.3); }
+.btn-whatsapp-header span { display: inline; }
+
+@media (max-width: 960px) {
+  .btn-whatsapp-header { width: 44px; height: 44px; padding: 0; border-radius: 12px; }
+  .btn-whatsapp-header span { display: none; }
+}
 .cart-btn {
   position: relative;
   background: var(--bg-card);
@@ -217,8 +225,8 @@ body:has(button:hover) .cursor-follower { width: 48px; height: 48px; border-colo
   .nav.open { transform: translateY(0); opacity: 1; visibility: visible; }
   .nav-link { padding: 14px 24px; border-radius: 0; }
   .menu-toggle { display: flex; }
-  .btn-whatsapp-header span { display: none; }
-  .btn-whatsapp-header { padding: 10px 12px; }
+  .scroll-hint { display: none; }
+  .cart-btn { display: flex !important; }
 }
 
 /* ===== PROMO TICKER ===== */
@@ -957,8 +965,13 @@ body:has(button:hover) .cursor-follower { width: 48px; height: 48px; border-colo
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
   display: flex; flex-direction: column;
+  overflow: hidden;
 }
 .cart-sidebar.open { transform: translateX(0); }
+
+@media (max-width: 600px) {
+  .cart-sidebar { width: 100%; }
+}
 .cart-header {
   display: flex; justify-content: space-between; align-items: center;
   padding: 24px 24px 20px;
@@ -1037,11 +1050,15 @@ body:has(button:hover) .cursor-follower { width: 48px; height: 48px; border-colo
   font-size: 0.88rem; font-weight: 600;
   padding: 12px 24px; border-radius: 100px;
   display: flex; align-items: center; gap: 8px;
-  z-index: 9000;
+  z-index: 4000;
   transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
   white-space: nowrap;
 }
 .toast.show { transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 600px) {
+  .toast { bottom: 100px; font-size: 0.75rem; padding: 10px 16px; }
+}
 
 /* ===== WPP FLOAT ===== */
 .wpp-float {
@@ -1063,6 +1080,10 @@ body:has(button:hover) .cursor-follower { width: 48px; height: 48px; border-colo
   animation: wppPulse 2s ease infinite;
 }
 @keyframes wppPulse { from { transform: scale(1); opacity:1 } to { transform: scale(1.4); opacity:0 } }
+
+@media (max-width: 600px) {
+  .wpp-float { bottom: 20px; right: 20px; width: 56px; height: 56px; }
+}
 
 /* ===== SCROLL REVEAL ===== */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
